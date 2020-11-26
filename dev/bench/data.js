@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1606362176788,
+  "lastUpdate": 1606362538706,
   "repoUrl": "https://github.com/jimeh/undent",
   "entries": {
     "Benchmark": [
@@ -228,6 +228,36 @@ window.BENCHMARK_DATA = {
             "value": 6598,
             "unit": "ns/op",
             "extra": "184706 times"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "contact@jimeh.me",
+            "name": "Jim Myhrberg",
+            "username": "jimeh"
+          },
+          "committer": {
+            "email": "contact@jimeh.me",
+            "name": "Jim Myhrberg",
+            "username": "jimeh"
+          },
+          "distinct": true,
+          "id": "dec0f2f4ee08a1491253f11162d6e094d95ecb1f",
+          "message": "ci(github): add CI workflow for GitHub Actions",
+          "timestamp": "2020-11-26T03:47:13Z",
+          "tree_id": "102f920eb8157d2185f8ac20bffc2570dc11f84b",
+          "url": "https://github.com/jimeh/undent/commit/dec0f2f4ee08a1491253f11162d6e094d95ecb1f"
+        },
+        "date": 1606362538231,
+        "tool": "go",
+        "benches": [
+          {
+            "name": "BenchmarkBytes__empty_2",
+            "value": 20.1,
+            "unit": "ns/opBenchmarkBytes__single_line_2   \t 1652955\t       707 ns/opBenchmarkBytes__single_line_indented_2         \t  287520\t      4718 ns/opBenchmarkBytes__multi_line_2                   \t  395197\t      2858 ns/opBenchmarkBytes__multi_line_space_indented_2    \t  119676\t      9987 ns/opBenchmarkBytes__multi_line_tab_indented_2      \t  172058\t      7354 ns/opBenchmarkBytes__multi_line_tab_indented_with_tabs_and_spaces_after_indent_2         \t  148478\t      7093 ns/opBenchmarkBytes__multi_line_space_indented_with_blank_lines_2                        \t  105769\t     10487 ns/opBenchmarkBytes__multi_line_tab_indented_with_blank_lines_2                          \t  152569\t      7441 ns/opBenchmarkBytes__multi_line_space_indented_with_random_indentation_2                 \t  170336\t      7788 ns/opBenchmarkBytes__multi_line_tab_indented_with_random_indentation_2                   \t  228340\t      5524 ns/opBenchmarkString__empty_2                                                            \t57569786\t        19.0 ns/opBenchmarkString__single_line_2                                                      \t 1861405\t       660 ns/opBenchmarkString__single_line_indented_2                                             \t  240829\t      4468 ns/opBenchmarkString__multi_line_2                                                       \t  450861\t      2686 ns/opBenchmarkString__multi_line_space_indented_2                                        \t  127868\t     10791 ns/opBenchmarkString__multi_line_tab_indented_2                                          \t  168198\t      7314 ns/opBenchmarkString__multi_line_tab_indented_with_tabs_and_spaces_after_indent_2        \t  155846\t      7438 ns/opBenchmarkString__multi_line_space_indented_with_blank_lines_2                       \t  129458\t      9980 ns/opBenchmarkString__multi_line_tab_indented_with_blank_lines_2                         \t  153171\t      7480 ns/opBenchmarkString__multi_line_space_indented_with_random_indentation_2                \t  156651\t      7992 ns/opBenchmarkString__multi_line_tab_indented_with_random_indentation_2                  \t  223809\t      5433 ns/opPASS",
+            "extra": "52438384 times"
           }
         ]
       }
