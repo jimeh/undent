@@ -14,6 +14,9 @@
     <img src="https://img.shields.io/badge/%E2%80%8B-reference-387b97.svg?logo=go&logoColor=white"
   alt="Go Reference">
   </a>
+  <a href="https://github.com/jimeh/undent/releases">
+    <img src="https://img.shields.io/github/v/tag/jimeh/undent?label=release" alt="GitHub tag (latest SemVer)">
+  </a>
   <a href="https://github.com/jimeh/undent/actions">
     <img src="https://img.shields.io/github/workflow/status/jimeh/undent/CI.svg?logo=github" alt="Actions Status">
   </a>

@@ -163,3 +163,11 @@ check-tidy:
 .PHONY: docs
 docs: godoc
 	@godoc -http=127.0.0.1:6060
+
+#
+# Release
+#
+
+.PHONY: new-version
+new-version:
+	npx standard-version
