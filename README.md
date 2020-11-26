@@ -4,8 +4,8 @@
 
 <p align="center">
   <strong>
-    Go package which removes leading indentation/white-space from multi-line
-    strings and byte slices.
+    Go package which removes leading indentation/white-space from strings and
+    byte slices.
   </strong>
 </p>
 
