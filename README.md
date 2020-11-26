@@ -52,8 +52,14 @@ fmt.Println(s)
 
 ## Documentation
 
-Please see the [Go Reference](https://pkg.go.dev/github.com/jimeh/undent) for
-documentation and examples.
+Please see the
+[Go Reference](https://pkg.go.dev/github.com/jimeh/undent#section-documentation)
+for documentation and examples.
+
+## Benchmarks
+
+Benchmark reports and graphs are available here:
+https://jimeh.me/undent/dev/bench/
 
 ## License
 
