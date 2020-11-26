@@ -1,0 +1,4 @@
+/*.tidy-check
+/bin/*
+/coverage.out
+/output.txt
