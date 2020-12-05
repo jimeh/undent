@@ -11,6 +11,10 @@ var matcher = regexp.MustCompile(`(?m)^([ \t]*)(?:\S)`)
 
 // Bytes removes leading indentation/white-space from given byte slice.
 func Bytes(b []byte) []byte {
+	if len(b) > 0 && b[0] == '\n' {
+		b = b[1:]
+	}
+
 	matches := matcher.FindAll(b, -1)
 	if len(matches) == 0 {
 		return b
@@ -39,6 +43,10 @@ func Bytes(b []byte) []byte {
 
 // String removes leading indentation/white-space from given string.
 func String(s string) string {
+	if len(s) > 0 && s[0] == '\n' {
+		s = s[1:]
+	}
+
 	matches := matcher.FindAllString(s, -1)
 	if len(matches) == 0 {
 		return s
