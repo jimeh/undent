@@ -35,8 +35,7 @@ var stringTestCases = []struct {
     "bar"
   ]
 }`,
-		want: `
-{
+		want: `{
   "hello": "world",
   "foo": [
     "bar"
@@ -52,7 +51,26 @@ var stringTestCases = []struct {
                 "bar"
               ]
             }`,
+		want: `{
+  "hello": "world",
+  "foo": [
+    "bar"
+  ]
+}`,
+	},
+	{
+		name: "multi-line space indented with leading line-breaks",
+		s: `
+
+
+            {
+              "hello": "world",
+              "foo": [
+                "bar"
+              ]
+            }`,
 		want: `
+
 {
   "hello": "world",
   "foo": [
@@ -69,7 +87,26 @@ var stringTestCases = []struct {
 					"bar"
 				]
 			}`,
+		want: `{
+	"hello": "world",
+	"foo": [
+		"bar"
+	]
+}`,
+	},
+	{
+		name: "multi-line tab indented with leading line breaks",
+		s: `
+
+
+			{
+				"hello": "world",
+				"foo": [
+					"bar"
+				]
+			}`,
 		want: `
+
 {
 	"hello": "world",
 	"foo": [
@@ -86,8 +123,7 @@ var stringTestCases = []struct {
 				"bar"
 			  ]
 			}`,
-		want: `
-{
+		want: `{
   "hello": "world",
   "foo": [
 	"bar"
@@ -105,8 +141,7 @@ var stringTestCases = []struct {
 
               ]
             }`,
-		want: `
-{
+		want: `{
   "hello": "world",
   "foo": [
 
@@ -126,8 +161,7 @@ var stringTestCases = []struct {
 
 				]
 			}`,
-		want: `
-{
+		want: `{
 	"hello": "world",
 	"foo": [
 
@@ -143,8 +177,7 @@ var stringTestCases = []struct {
             world
               foo
                 bar`,
-		want: `
-  hello
+		want: `  hello
 world
   foo
     bar`,
@@ -156,8 +189,7 @@ world
 			world
 				foo
 					bar`,
-		want: `
-	hello
+		want: `	hello
 world
 	foo
 		bar`,
@@ -197,8 +229,7 @@ var stringfTestCases = []struct {
   ]
 }`,
 		a: []interface{}{"world", 42},
-		want: `
-{
+		want: `{
   "hello": "world",
   "foo": [
     42
@@ -215,7 +246,27 @@ var stringfTestCases = []struct {
               ]
             }`,
 		a: []interface{}{"world", 42},
+		want: `{
+  "hello": "world",
+  "foo": [
+    42
+  ]
+}`,
+	},
+	{
+		name: "multi-line space indented with leading line-breaks",
+		s: `
+
+
+            {
+              "hello": "%s",
+              "foo": [
+                %d
+              ]
+            }`,
+		a: []interface{}{"world", 42},
 		want: `
+
 {
   "hello": "world",
   "foo": [
@@ -233,7 +284,27 @@ var stringfTestCases = []struct {
 				]
 			}`,
 		a: []interface{}{"world", 42},
+		want: `{
+	"hello": "world",
+	"foo": [
+		42
+	]
+}`,
+	},
+	{
+		name: "multi-line tab indented with leading line-breaks",
+		s: `
+
+
+			{
+				"hello": "%s",
+				"foo": [
+					%d
+				]
+			}`,
+		a: []interface{}{"world", 42},
 		want: `
+
 {
 	"hello": "world",
 	"foo": [
@@ -251,8 +322,7 @@ var stringfTestCases = []struct {
 			  ]
 			}`,
 		a: []interface{}{"world", 42},
-		want: `
-{
+		want: `{
   "hello": "world",
   "foo": [
 	42
@@ -271,8 +341,7 @@ var stringfTestCases = []struct {
               ]
             }`,
 		a: []interface{}{"world", 42},
-		want: `
-{
+		want: `{
   "hello": "world",
   "foo": [
 
@@ -293,8 +362,7 @@ var stringfTestCases = []struct {
 				]
 			}`,
 		a: []interface{}{"world", 42},
-		want: `
-{
+		want: `{
 	"hello": "world",
 	"foo": [
 
@@ -311,8 +379,7 @@ var stringfTestCases = []struct {
               foo
                 %d`,
 		a: []interface{}{"world", 42},
-		want: `
-  hello
+		want: `  hello
 world
   foo
     42`,
@@ -325,8 +392,7 @@ world
 				foo
 					%d`,
 		a: []interface{}{"world", 42},
-		want: `
-	hello
+		want: `	hello
 world
 	foo
 		42`,

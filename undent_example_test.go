@@ -15,7 +15,6 @@ func ExampleBytes() {
 
 	fmt.Println(string(b))
 	// Output:
-	//
 	// {
 	//   "hello": "world"
 	// }
@@ -29,7 +28,6 @@ func ExampleString() {
 	)
 	fmt.Println(s)
 	// Output:
-	//
 	// {
 	//   "hello": "world"
 	// }
@@ -44,7 +42,6 @@ func ExampleStringf() {
 	)
 	fmt.Println(s)
 	// Output:
-	//
 	// {
 	//   "hello": "world"
 	// }
