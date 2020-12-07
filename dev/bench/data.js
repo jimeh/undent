@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1607338059021,
+  "lastUpdate": 1607338206013,
   "repoUrl": "https://github.com/jimeh/undent",
   "entries": {
     "Benchmark": [
@@ -1116,6 +1116,186 @@ window.BENCHMARK_DATA = {
             "value": 6201,
             "unit": "ns/op",
             "extra": "172933 times"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "contact@jimeh.me",
+            "name": "Jim Myhrberg",
+            "username": "jimeh"
+          },
+          "committer": {
+            "email": "contact@jimeh.me",
+            "name": "Jim Myhrberg",
+            "username": "jimeh"
+          },
+          "distinct": true,
+          "id": "d79e413e8e850311b314af5895e9a0e30330edd9",
+          "message": "chore(release): 1.0.1",
+          "timestamp": "2020-12-07T10:48:40Z",
+          "tree_id": "8814f191f27b6fa41c8c764c1db1ef5b4d69d0a1",
+          "url": "https://github.com/jimeh/undent/commit/d79e413e8e850311b314af5895e9a0e30330edd9"
+        },
+        "date": 1607338205387,
+        "tool": "go",
+        "benches": [
+          {
+            "name": "BenchmarkBytes__empty",
+            "value": 24.1,
+            "unit": "ns/op",
+            "extra": "49101105 times"
+          },
+          {
+            "name": "BenchmarkBytes__single_line",
+            "value": 809,
+            "unit": "ns/op",
+            "extra": "1488776 times"
+          },
+          {
+            "name": "BenchmarkBytes__single_line_indented",
+            "value": 5307,
+            "unit": "ns/op",
+            "extra": "237110 times"
+          },
+          {
+            "name": "BenchmarkBytes__multi_line",
+            "value": 3127,
+            "unit": "ns/op",
+            "extra": "400209 times"
+          },
+          {
+            "name": "BenchmarkBytes__multi_line_space_indented",
+            "value": 11757,
+            "unit": "ns/op",
+            "extra": "101338 times"
+          },
+          {
+            "name": "BenchmarkBytes__multi_line_space_indented_with_leading_line_breaks",
+            "value": 12086,
+            "unit": "ns/op",
+            "extra": "101486 times"
+          },
+          {
+            "name": "BenchmarkBytes__multi_line_tab_indented",
+            "value": 8279,
+            "unit": "ns/op",
+            "extra": "141848 times"
+          },
+          {
+            "name": "BenchmarkBytes__multi_line_tab_indented_with_leading_line_breaks",
+            "value": 8444,
+            "unit": "ns/op",
+            "extra": "134828 times"
+          },
+          {
+            "name": "BenchmarkBytes__multi_line_tab_indented_with_tabs_and_spaces_after_indent",
+            "value": 8404,
+            "unit": "ns/op",
+            "extra": "145153 times"
+          },
+          {
+            "name": "BenchmarkBytes__multi_line_space_indented_with_blank_lines",
+            "value": 11970,
+            "unit": "ns/op",
+            "extra": "101787 times"
+          },
+          {
+            "name": "BenchmarkBytes__multi_line_tab_indented_with_blank_lines",
+            "value": 8669,
+            "unit": "ns/op",
+            "extra": "146359 times"
+          },
+          {
+            "name": "BenchmarkBytes__multi_line_space_indented_with_random_indentation",
+            "value": 8845,
+            "unit": "ns/op",
+            "extra": "132127 times"
+          },
+          {
+            "name": "BenchmarkBytes__multi_line_tab_indented_with_random_indentation",
+            "value": 6086,
+            "unit": "ns/op",
+            "extra": "196512 times"
+          },
+          {
+            "name": "BenchmarkString__empty",
+            "value": 22.3,
+            "unit": "ns/op",
+            "extra": "53519550 times"
+          },
+          {
+            "name": "BenchmarkString__single_line",
+            "value": 769,
+            "unit": "ns/op",
+            "extra": "1548238 times"
+          },
+          {
+            "name": "BenchmarkString__single_line_indented",
+            "value": 5370,
+            "unit": "ns/op",
+            "extra": "233052 times"
+          },
+          {
+            "name": "BenchmarkString__multi_line",
+            "value": 2959,
+            "unit": "ns/op",
+            "extra": "419191 times"
+          },
+          {
+            "name": "BenchmarkString__multi_line_space_indented",
+            "value": 12111,
+            "unit": "ns/op",
+            "extra": "105697 times"
+          },
+          {
+            "name": "BenchmarkString__multi_line_space_indented_with_leading_line_breaks",
+            "value": 11716,
+            "unit": "ns/op",
+            "extra": "103083 times"
+          },
+          {
+            "name": "BenchmarkString__multi_line_tab_indented",
+            "value": 8074,
+            "unit": "ns/op",
+            "extra": "127765 times"
+          },
+          {
+            "name": "BenchmarkString__multi_line_tab_indented_with_leading_line_breaks",
+            "value": 8588,
+            "unit": "ns/op",
+            "extra": "144450 times"
+          },
+          {
+            "name": "BenchmarkString__multi_line_tab_indented_with_tabs_and_spaces_after_indent",
+            "value": 8354,
+            "unit": "ns/op",
+            "extra": "151011 times"
+          },
+          {
+            "name": "BenchmarkString__multi_line_space_indented_with_blank_lines",
+            "value": 11947,
+            "unit": "ns/op",
+            "extra": "95739 times"
+          },
+          {
+            "name": "BenchmarkString__multi_line_tab_indented_with_blank_lines",
+            "value": 8446,
+            "unit": "ns/op",
+            "extra": "126568 times"
+          },
+          {
+            "name": "BenchmarkString__multi_line_space_indented_with_random_indentation",
+            "value": 8974,
+            "unit": "ns/op",
+            "extra": "130006 times"
+          },
+          {
+            "name": "BenchmarkString__multi_line_tab_indented_with_random_indentation",
+            "value": 6165,
+            "unit": "ns/op",
+            "extra": "197230 times"
           }
         ]
       }
