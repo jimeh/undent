@@ -402,9 +402,21 @@ world
 func TestBytes(t *testing.T) {
 	for _, tt := range stringTestCases {
 		t.Run(tt.name, func(t *testing.T) {
-			got := Bytes([]byte(tt.s))
+			got := Bytes(tt.s)
 
-			assert.Equal(t, []byte(tt.want), got)
+			assert.IsType(t, []byte{}, got)
+			assert.Equal(t, tt.want, string(got))
+		})
+	}
+}
+
+func TestBytesf(t *testing.T) {
+	for _, tt := range stringfTestCases {
+		t.Run(tt.name, func(t *testing.T) {
+			got := Bytesf(tt.s, tt.a...)
+
+			assert.IsType(t, []byte{}, got)
+			assert.Equal(t, tt.want, string(got))
 		})
 	}
 }
@@ -414,6 +426,7 @@ func TestString(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			got := String(tt.s)
 
+			assert.IsType(t, "", got)
 			assert.Equal(t, tt.want, got)
 		})
 	}
@@ -424,6 +437,7 @@ func TestStringf(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			got := Stringf(tt.s, tt.a...)
 
+			assert.IsType(t, "", got)
 			assert.Equal(t, tt.want, got)
 		})
 	}
@@ -432,10 +446,8 @@ func TestStringf(t *testing.T) {
 func BenchmarkBytes(b *testing.B) {
 	for _, tt := range stringTestCases {
 		b.Run(tt.name, func(b *testing.B) {
-			input := []byte(tt.s)
-
 			for i := 0; i < b.N; i++ {
-				Bytes(input)
+				Bytes(tt.s)
 			}
 		})
 	}

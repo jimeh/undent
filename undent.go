@@ -9,36 +9,17 @@ import (
 
 var matcher = regexp.MustCompile(`(?m)^([ \t]*)(?:\S)`)
 
-// Bytes removes leading indentation/white-space from given byte slice.
-func Bytes(b []byte) []byte {
-	if len(b) > 0 && b[0] == '\n' {
-		b = b[1:]
-	}
+// Bytes removes leading indentation/white-space from given string and returns
+// it as a byte slice.
+func Bytes(s string) []byte {
+	return []byte(String(s))
+}
 
-	matches := matcher.FindAll(b, -1)
-	if len(matches) == 0 {
-		return b
-	}
-
-	index := 0
-	length := len(matches[0])
-
-	for i, s := range matches[1:] {
-		l := len(s)
-		if l < length {
-			index = i + 1
-			length = l
-		}
-	}
-
-	if length <= 1 {
-		return b
-	}
-	indent := matches[index][0 : length-1]
-
-	return regexp.MustCompile(
-		`(?m)^`+regexp.QuoteMeta(string(indent)),
-	).ReplaceAllLiteral(b, []byte{})
+// Bytesf removes leading indentation/white-space from given format string
+// before passing format and all additional arguments to fmt.Sprintf, returning
+// the result as a byte slice.
+func Bytesf(format string, a ...interface{}) []byte {
+	return []byte(Stringf(format, a...))
 }
 
 // String removes leading indentation/white-space from given string.

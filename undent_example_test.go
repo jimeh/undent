@@ -7,13 +7,27 @@ import (
 )
 
 func ExampleBytes() {
-	b := undent.Bytes([]byte(`
+	b := undent.Bytes(`
 		{
 		  "hello": "world"
 		}`,
-	))
+	)
 
 	fmt.Println(string(b))
+	// Output:
+	// {
+	//   "hello": "world"
+	// }
+}
+
+func ExampleBytesf() {
+	s := undent.Bytesf(`
+		{
+		  "hello": "%s"
+		}`,
+		"world",
+	)
+	fmt.Println(string(s))
 	// Output:
 	// {
 	//   "hello": "world"
