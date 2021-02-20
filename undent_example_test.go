@@ -1,6 +1,7 @@
 package undent_test
 
 import (
+	"bytes"
 	"fmt"
 
 	"github.com/jimeh/undent"
@@ -55,6 +56,60 @@ func ExampleStringf() {
 		"world",
 	)
 	fmt.Println(s)
+	// Output:
+	// {
+	//   "hello": "world"
+	// }
+}
+
+func ExamplePrint() {
+	undent.Print(`
+		{
+		  "hello": "world"
+		}`,
+	)
+	// Output:
+	// {
+	//   "hello": "world"
+	// }
+}
+
+func ExamplePrintf() {
+	undent.Printf(`
+		{
+		  "hello": "%s"
+		}`,
+		"world",
+	)
+	// Output:
+	// {
+	//   "hello": "world"
+	// }
+}
+
+func ExampleFprint() {
+	var buf bytes.Buffer
+	undent.Fprint(&buf, `
+		{
+		  "hello": "world"
+		}`,
+	)
+	fmt.Println(buf.String())
+	// Output:
+	// {
+	//   "hello": "world"
+	// }
+}
+
+func ExampleFprintf() {
+	var buf bytes.Buffer
+	undent.Fprintf(&buf, `
+		{
+		  "hello": "%s"
+		}`,
+		"world",
+	)
+	fmt.Println(buf.String())
 	// Output:
 	// {
 	//   "hello": "world"
