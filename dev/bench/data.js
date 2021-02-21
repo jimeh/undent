@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1607957831095,
+  "lastUpdate": 1613866321225,
   "repoUrl": "https://github.com/jimeh/undent",
   "entries": {
     "Benchmark": [
@@ -2016,6 +2016,186 @@ window.BENCHMARK_DATA = {
             "value": 5108,
             "unit": "ns/op",
             "extra": "236418 times"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "contact@jimeh.me",
+            "name": "Jim Myhrberg",
+            "username": "jimeh"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "c3e2bd98b0affa3a0c9b628ac5515bd300f5a505",
+          "message": "Merge pull request #5 from jimeh/add-print-funcs\n\nfeat(print) add Print, Printf, Fprint, and Fprintf functions",
+          "timestamp": "2021-02-21T00:10:54Z",
+          "tree_id": "66b48a2a2f8e572bd6cba1f0606cd872dbdeda74",
+          "url": "https://github.com/jimeh/undent/commit/c3e2bd98b0affa3a0c9b628ac5515bd300f5a505"
+        },
+        "date": 1613866320701,
+        "tool": "go",
+        "benches": [
+          {
+            "name": "BenchmarkBytes__empty",
+            "value": 29.8,
+            "unit": "ns/op",
+            "extra": "40923033 times"
+          },
+          {
+            "name": "BenchmarkBytes__single_line",
+            "value": 824,
+            "unit": "ns/op",
+            "extra": "1445350 times"
+          },
+          {
+            "name": "BenchmarkBytes__single_line_indented",
+            "value": 5418,
+            "unit": "ns/op",
+            "extra": "203694 times"
+          },
+          {
+            "name": "BenchmarkBytes__multi_line",
+            "value": 3097,
+            "unit": "ns/op",
+            "extra": "390739 times"
+          },
+          {
+            "name": "BenchmarkBytes__multi_line_space_indented",
+            "value": 11969,
+            "unit": "ns/op",
+            "extra": "91128 times"
+          },
+          {
+            "name": "BenchmarkBytes__multi_line_space_indented_with_leading_line_breaks",
+            "value": 12222,
+            "unit": "ns/op",
+            "extra": "98329 times"
+          },
+          {
+            "name": "BenchmarkBytes__multi_line_tab_indented",
+            "value": 8405,
+            "unit": "ns/op",
+            "extra": "142440 times"
+          },
+          {
+            "name": "BenchmarkBytes__multi_line_tab_indented_with_leading_line_breaks",
+            "value": 8737,
+            "unit": "ns/op",
+            "extra": "137066 times"
+          },
+          {
+            "name": "BenchmarkBytes__multi_line_tab_indented_with_tabs_and_spaces_after_indent",
+            "value": 8523,
+            "unit": "ns/op",
+            "extra": "139654 times"
+          },
+          {
+            "name": "BenchmarkBytes__multi_line_space_indented_with_blank_lines",
+            "value": 12170,
+            "unit": "ns/op",
+            "extra": "98876 times"
+          },
+          {
+            "name": "BenchmarkBytes__multi_line_tab_indented_with_blank_lines",
+            "value": 8889,
+            "unit": "ns/op",
+            "extra": "131976 times"
+          },
+          {
+            "name": "BenchmarkBytes__multi_line_space_indented_with_random_indentation",
+            "value": 9016,
+            "unit": "ns/op",
+            "extra": "134689 times"
+          },
+          {
+            "name": "BenchmarkBytes__multi_line_tab_indented_with_random_indentation",
+            "value": 6390,
+            "unit": "ns/op",
+            "extra": "171356 times"
+          },
+          {
+            "name": "BenchmarkString__empty",
+            "value": 23,
+            "unit": "ns/op",
+            "extra": "53577548 times"
+          },
+          {
+            "name": "BenchmarkString__single_line",
+            "value": 830,
+            "unit": "ns/op",
+            "extra": "1434673 times"
+          },
+          {
+            "name": "BenchmarkString__single_line_indented",
+            "value": 5482,
+            "unit": "ns/op",
+            "extra": "222997 times"
+          },
+          {
+            "name": "BenchmarkString__multi_line",
+            "value": 3055,
+            "unit": "ns/op",
+            "extra": "406969 times"
+          },
+          {
+            "name": "BenchmarkString__multi_line_space_indented",
+            "value": 12090,
+            "unit": "ns/op",
+            "extra": "93958 times"
+          },
+          {
+            "name": "BenchmarkString__multi_line_space_indented_with_leading_line_breaks",
+            "value": 12118,
+            "unit": "ns/op",
+            "extra": "96960 times"
+          },
+          {
+            "name": "BenchmarkString__multi_line_tab_indented",
+            "value": 8441,
+            "unit": "ns/op",
+            "extra": "137487 times"
+          },
+          {
+            "name": "BenchmarkString__multi_line_tab_indented_with_leading_line_breaks",
+            "value": 8875,
+            "unit": "ns/op",
+            "extra": "137877 times"
+          },
+          {
+            "name": "BenchmarkString__multi_line_tab_indented_with_tabs_and_spaces_after_indent",
+            "value": 8591,
+            "unit": "ns/op",
+            "extra": "139005 times"
+          },
+          {
+            "name": "BenchmarkString__multi_line_space_indented_with_blank_lines",
+            "value": 12198,
+            "unit": "ns/op",
+            "extra": "97150 times"
+          },
+          {
+            "name": "BenchmarkString__multi_line_tab_indented_with_blank_lines",
+            "value": 8747,
+            "unit": "ns/op",
+            "extra": "132692 times"
+          },
+          {
+            "name": "BenchmarkString__multi_line_space_indented_with_random_indentation",
+            "value": 9216,
+            "unit": "ns/op",
+            "extra": "134044 times"
+          },
+          {
+            "name": "BenchmarkString__multi_line_tab_indented_with_random_indentation",
+            "value": 6504,
+            "unit": "ns/op",
+            "extra": "193850 times"
           }
         ]
       }
