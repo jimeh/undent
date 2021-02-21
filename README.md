@@ -30,7 +30,7 @@ alt="GitHub issues">
   <a href="https://github.com/jimeh/undent/pulls">
     <img src="https://img.shields.io/github/issues-pr-raw/jimeh/undent.svg?style=flat&logo=github&logoColor=white" alt="GitHub pull requests">
   </a>
-  <a href="https://github.com/jimeh/undent/blob/master/LICENSE">
+  <a href="https://github.com/jimeh/undent/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/jimeh/undent.svg?style=flat" alt="License Status">
   </a>
 </p>
@@ -63,4 +63,4 @@ https://jimeh.me/undent/dev/bench/
 
 ## License
 
-[MIT](https://github.com/jimeh/undent/blob/master/LICENSE)
+[MIT](https://github.com/jimeh/undent/blob/main/LICENSE)
