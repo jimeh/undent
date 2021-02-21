@@ -5,15 +5,85 @@ package undent
 import (
 	"fmt"
 	"io"
-	"regexp"
 )
 
-var matcher = regexp.MustCompile(`(?m)^([ \t]*)(?:\S)`)
+const (
+	tab = 9
+	lf  = 10
+	spc = 32
+)
 
 // Bytes removes leading indentation/white-space from given string and returns
 // it as a byte slice.
 func Bytes(s string) []byte {
-	return []byte(String(s))
+	if len(s) == 0 {
+		return []byte{}
+	}
+
+	// find line feeds
+	lfs := []int{}
+
+	if s[0] != lf {
+		lfs = append(lfs, -1)
+	}
+
+	for i := 0; i < len(s); i++ {
+		if s[i] == lf {
+			lfs = append(lfs, i)
+		}
+	}
+
+	// find smallest indent relative to each line-feed
+	min := 99999999999
+	count := 0
+
+	for i := 0; i < len(lfs); i++ {
+		offset := lfs[i]
+		end := len(s) - 1
+		if i+1 < len(lfs) {
+			end = lfs[i+1]
+		}
+
+		if offset+1 >= end {
+			continue
+		}
+
+		indent := 0
+	lineSeek:
+		for n := offset + 1; n < end && indent < min; n++ {
+			switch s[n] {
+			case spc, tab:
+				indent++
+			default:
+				break lineSeek
+			}
+		}
+		if indent < min {
+			min = indent
+		}
+		if indent > 0 {
+			count++
+		}
+	}
+
+	// extract each line without indentation
+	out := make([]byte, 0, len(s)-(min*count))
+
+	for i := 0; i < len(lfs); i++ {
+		offset := lfs[i] + 1
+		end := len(s)
+		if i+1 < len(lfs) {
+			end = lfs[i+1] + 1
+		}
+
+		if offset+min < end {
+			out = append(out, s[offset+min:end]...)
+		} else if offset < end {
+			out = append(out, s[offset:end]...)
+		}
+	}
+
+	return out
 }
 
 // Bytesf removes leading indentation/white-space from given format string
@@ -25,34 +95,7 @@ func Bytesf(format string, a ...interface{}) []byte {
 
 // String removes leading indentation/white-space from given string.
 func String(s string) string {
-	if len(s) > 0 && s[0] == '\n' {
-		s = s[1:]
-	}
-
-	matches := matcher.FindAllString(s, -1)
-	if len(matches) == 0 {
-		return s
-	}
-
-	index := 0
-	length := len(matches[0])
-
-	for i, s := range matches[1:] {
-		l := len(s)
-		if l < length {
-			index = i + 1
-			length = l
-		}
-	}
-
-	if length <= 1 {
-		return s
-	}
-	indent := matches[index][0 : length-1]
-
-	return regexp.MustCompile(
-		`(?m)^`+regexp.QuoteMeta(indent),
-	).ReplaceAllLiteralString(s, "")
+	return string(Bytes(s))
 }
 
 // Stringf removes leading indentation/white-space from given format string
