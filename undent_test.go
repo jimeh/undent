@@ -1,9 +1,12 @@
 package undent
 
 import (
+	"bytes"
 	"testing"
 
+	"github.com/rhysd/go-fakeio"
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 var stringTestCases = []struct {
@@ -436,6 +439,62 @@ func TestStringf(t *testing.T) {
 	for _, tt := range stringfTestCases {
 		t.Run(tt.name, func(t *testing.T) {
 			got := Stringf(tt.s, tt.a...)
+
+			assert.IsType(t, "", got)
+			assert.Equal(t, tt.want, got)
+		})
+	}
+}
+
+func TestPrint(t *testing.T) {
+	for _, tt := range stringTestCases {
+		t.Run(tt.name, func(t *testing.T) {
+			got, err := fakeio.Stdout().Do(func() {
+				Print(tt.s, 5, tt.s)
+			})
+			require.NoError(t, err)
+
+			assert.IsType(t, "", got)
+			assert.Equal(t, tt.want+"5"+tt.want, got)
+		})
+	}
+}
+
+func TestPrintf(t *testing.T) {
+	for _, tt := range stringfTestCases {
+		t.Run(tt.name, func(t *testing.T) {
+			got, err := fakeio.Stdout().Do(func() {
+				Printf(tt.s, tt.a...)
+			})
+			require.NoError(t, err)
+
+			assert.IsType(t, "", got)
+			assert.Equal(t, tt.want, got)
+		})
+	}
+}
+
+func TestFprint(t *testing.T) {
+	for _, tt := range stringTestCases {
+		t.Run(tt.name, func(t *testing.T) {
+			var buf bytes.Buffer
+
+			Fprint(&buf, tt.s, 5, tt.s)
+			got := buf.String()
+
+			assert.IsType(t, "", got)
+			assert.Equal(t, tt.want+"5"+tt.want, got)
+		})
+	}
+}
+
+func TestFprintf(t *testing.T) {
+	for _, tt := range stringfTestCases {
+		t.Run(tt.name, func(t *testing.T) {
+			var buf bytes.Buffer
+
+			Fprintf(&buf, tt.s, tt.a...)
+			got := buf.String()
 
 			assert.IsType(t, "", got)
 			assert.Equal(t, tt.want, got)

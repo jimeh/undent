@@ -1,3 +1,4 @@
+GOMODNAME := $(shell grep 'module' go.mod | sed -e 's/^module //')
 SOURCES := $(shell find . -name "*.go" -or -name "go.mod" -or -name "go.sum" \
 	-or -name "Makefile")
 
@@ -18,7 +19,7 @@ SHELL ?= /bin/bash
 SHELL := env \
 	GO111MODULE=on \
 	GOBIN=$(CURDIR)/$(TOOLDIR) \
-	CGO_ENABLED=1 \
+	CGO_ENABLED=0 \
 	PATH='$(CURDIR)/$(BINDIR):$(CURDIR)/$(TOOLDIR):$(PATH)' \
 	$(SHELL)
 
@@ -34,7 +35,6 @@ SHELL := env \
 #
 
 TOOLS += $(TOOLDIR)/gobin
-gobin: $(TOOLDIR)/gobin
 $(TOOLDIR)/gobin:
 	GO111MODULE=off go get -u github.com/myitcv/gobin
 
@@ -42,16 +42,13 @@ $(TOOLDIR)/gobin:
 define tool # 1: binary-name, 2: go-import-path
 TOOLS += $(TOOLDIR)/$(1)
 
-.PHONY: $(1)
-$(1): $(TOOLDIR)/$(1)
-
 $(TOOLDIR)/$(1): $(TOOLDIR)/gobin Makefile
 	gobin $(V) "$(2)"
 endef
 
 $(eval $(call tool,godoc,golang.org/x/tools/cmd/godoc))
 $(eval $(call tool,gofumports,mvdan.cc/gofumpt/gofumports))
-$(eval $(call tool,golangci-lint,github.com/golangci/golangci-lint/cmd/golangci-lint@v1.31))
+$(eval $(call tool,golangci-lint,github.com/golangci/golangci-lint/cmd/golangci-lint@v1.37))
 
 .PHONY: tools
 tools: $(TOOLS)
@@ -75,25 +72,18 @@ clean-golden:
 
 .PHONY: test
 test:
-	go test $(V) -count=1 -race $(TESTARGS) $(TEST)
-
-.PHONY: test-update-golden
-test-update-golden:
-	@$(MAKE) test UPDATE_GOLDEN=1
-
-.PHONY: regen-golden
-regen-golden: clean-golden test-update-golden
+	CGO_ENABLED=1 go test $(V) -count=1 -race $(TESTARGS) $(TEST)
 
 .PHONY: test-deps
 test-deps:
 	go test all
 
 .PHONY: lint
-lint: golangci-lint
+lint: $(TOOLDIR)/golangci-lint
 	GOGC=off golangci-lint $(V) run
 
 .PHONY: format
-format: gofumports
+format: $(TOOLDIR)/gofumports
 	gofumports -w .
 
 .SILENT: bench
@@ -161,7 +151,8 @@ check-tidy:
 
 # Serve docs
 .PHONY: docs
-docs: godoc
+docs: $(TOOLDIR)/godoc
+	$(info serving docs on http://127.0.0.1:6060/pkg/$(GOMODNAME)/)
 	@godoc -http=127.0.0.1:6060
 
 #

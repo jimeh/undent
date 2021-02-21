@@ -4,6 +4,7 @@ package undent
 
 import (
 	"fmt"
+	"io"
 	"regexp"
 )
 
@@ -59,4 +60,39 @@ func String(s string) string {
 // the result.
 func Stringf(format string, a ...interface{}) string {
 	return fmt.Sprintf(String(format), a...)
+}
+
+// Print will undent any strings arguments before passing them to fmt.Print.
+func Print(a ...interface{}) (n int, err error) {
+	return fmt.Print(undentInterfaces(a)...)
+}
+
+// Printf will undent the given format string before passing it and all
+// arguments to fmt.Printf.
+func Printf(format string, a ...interface{}) (n int, err error) {
+	return fmt.Printf(String(format), a...)
+}
+
+// Fprint will undent any string arguments before passing them to fmt.Fprint.
+func Fprint(w io.Writer, a ...interface{}) (n int, err error) {
+	return fmt.Fprint(w, undentInterfaces(a)...)
+}
+
+// Fprintf will undent the given format string before passing it and all
+// arguments to fmt.Fprintf.
+func Fprintf(w io.Writer, format string, a ...interface{}) (n int, err error) {
+	return fmt.Fprintf(w, String(format), a...)
+}
+
+func undentInterfaces(a []interface{}) []interface{} {
+	var r []interface{}
+
+	for _, v := range a {
+		if s, ok := v.(string); ok {
+			v = String(s)
+		}
+		r = append(r, v)
+	}
+
+	return r
 }
