@@ -105,7 +105,7 @@ func Stringf(format string, a ...interface{}) string {
 	return fmt.Sprintf(String(format), a...)
 }
 
-// Print will undent any strings arguments before passing them to fmt.Print.
+// Print will undent any string arguments before passing them to fmt.Print.
 func Print(a ...interface{}) (n int, err error) {
 	return fmt.Print(undentInterfaces(a)...)
 }
