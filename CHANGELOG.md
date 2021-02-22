@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/jimeh/undent/compare/v1.0.2...v1.1.0) (2021-02-22)
+
+
+### Features
+
+* **performance:** improve core undenting performance by around 20-30x ([6a2254e](https://github.com/jimeh/undent/commit/6a2254e918944e5ead4d5a4d6d1b95b0e971c4b7))
+* **print** add Print, Printf, Fprint, and Fprintf functions ([5cae4bc](https://github.com/jimeh/undent/commit/5cae4bc420f7bec12efd6071149eac88c37cfd9f))
+
 ### [1.0.2](https://github.com/jimeh/undent/compare/v1.0.1...v1.0.2) (2020-12-14)
 
 
