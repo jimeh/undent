@@ -140,3 +140,13 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           comment-on-alert: true
           auto-push: true
+
+  release-please:
+    needs: [test]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: google-github-actions/release-please-action@v3
+        id: release-please
+        with:
+          command: manifest
