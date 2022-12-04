@@ -5,6 +5,7 @@ package undent
 import (
 	"fmt"
 	"io"
+	"strings"
 )
 
 const (
@@ -20,49 +21,32 @@ func Bytes(s string) []byte {
 		return []byte{}
 	}
 
-	// find line feeds
-	lfs := []int{}
-
-	if s[0] != lf {
-		lfs = append(lfs, -1)
-	}
-
-	for i := 0; i < len(s); i++ {
-		if s[i] == lf {
-			lfs = append(lfs, i)
-		}
-	}
-
 	// find smallest indent relative to each line-feed
 	min := 99999999999
 	count := 0
 
-	for i := 0; i < len(lfs); i++ {
-		offset := lfs[i]
-		end := len(s) - 1
-		if i+1 < len(lfs) {
-			end = lfs[i+1]
-		}
+	lfs := make([]int, 0, strings.Count(s, "\n"))
+	if s[0] != lf {
+		lfs = append(lfs, -1)
+	}
 
-		if offset+1 >= end {
-			continue
-		}
-
-		indent := 0
-	lineSeek:
-		for n := offset + 1; n < end && indent < min; n++ {
-			switch s[n] {
+	indent := 0
+	for i := 0; i < len(s); i++ {
+		if s[i] == lf {
+			lfs = append(lfs, i)
+			indent = 0
+		} else if indent < min {
+			switch s[i] {
 			case spc, tab:
 				indent++
 			default:
-				break lineSeek
+				if indent > 0 {
+					count++
+				}
+				if indent < min {
+					min = indent
+				}
 			}
-		}
-		if indent < min {
-			min = indent
-		}
-		if indent > 0 {
-			count++
 		}
 	}
 
