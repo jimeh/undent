@@ -717,7 +717,7 @@ func TestPrint(t *testing.T) {
 	for _, tt := range stringTestCases {
 		t.Run(tt.name, func(t *testing.T) {
 			got, err := fakeio.Stdout().Do(func() {
-				Print(tt.s, 5, tt.s)
+				_, _ = Print(tt.s, 5, tt.s)
 			})
 			require.NoError(t, err)
 
@@ -731,7 +731,7 @@ func TestPrintf(t *testing.T) {
 	for _, tt := range stringfTestCases {
 		t.Run(tt.name, func(t *testing.T) {
 			got, err := fakeio.Stdout().Do(func() {
-				Printf(tt.s, tt.a...)
+				_, _ = Printf(tt.s, tt.a...)
 			})
 			require.NoError(t, err)
 
@@ -746,7 +746,7 @@ func TestFprint(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			var buf bytes.Buffer
 
-			Fprint(&buf, tt.s, 5, tt.s)
+			_, _ = Fprint(&buf, tt.s, 5, tt.s)
 			got := buf.String()
 
 			assert.IsType(t, "", got)
@@ -760,7 +760,7 @@ func TestFprintf(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			var buf bytes.Buffer
 
-			Fprintf(&buf, tt.s, tt.a...)
+			_, _ = Fprintf(&buf, tt.s, tt.a...)
 			got := buf.String()
 
 			assert.IsType(t, "", got)
