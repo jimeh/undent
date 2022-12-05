@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/jimeh/undent/compare/v1.1.0...v1.1.1) (2022-12-05)
+
+
+### Performance Improvements
+
+* simplify line-feed and minimum indentation loops ([178d9b5](https://github.com/jimeh/undent/commit/178d9b5bf6dd090a406229e862c5da1ba26cbf5d))
+
 ## [1.1.0](https://github.com/jimeh/undent/compare/v1.0.2...v1.1.0) (2021-02-22)
 
 
