@@ -1,6 +1,4 @@
 {
-  "bootstrap-sha": "369ec87dddfae22534693f8cf3be6cb85bc46f9d",
-  "last-release-sha": "369ec87dddfae22534693f8cf3be6cb85bc46f9d",
   "release-type": "go",
   "bump-minor-pre-major": true,
   "bump-patch-for-minor-pre-major": true,
