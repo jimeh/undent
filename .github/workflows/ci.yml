@@ -142,7 +142,7 @@ jobs:
           auto-push: true
 
   release-please:
-    needs: [test]
+    needs: [lint, tidy, test]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
