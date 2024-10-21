@@ -22,7 +22,7 @@ func Bytes(s string) []byte {
 	}
 
 	// find smallest indent relative to each line-feed
-	min := 99999999999
+	min := -1
 	count := 0
 
 	lfs := make([]int, 0, strings.Count(s, "\n"))
@@ -35,7 +35,7 @@ func Bytes(s string) []byte {
 		if s[i] == lf {
 			lfs = append(lfs, i)
 			indent = 0
-		} else if indent < min {
+		} else if indent < min || min == -1 {
 			switch s[i] {
 			case spc, tab:
 				indent++
@@ -43,11 +43,15 @@ func Bytes(s string) []byte {
 				if indent > 0 {
 					count++
 				}
-				if indent < min {
+				if indent < min || min == -1 {
 					min = indent
 				}
 			}
 		}
+	}
+
+	if min == -1 {
+		return []byte(s)
 	}
 
 	// extract each line without indentation
